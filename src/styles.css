@@ -1,0 +1,50 @@
+* { 
+  box-sizing: border-box;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.header-div {  
+  background: linear-gradient(90deg, purple, white 99%);
+  padding: 25px 0px;
+  margin: -10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}  
+
+.header-div > img { 
+  margin-right: 30px;
+  margin-top: 25px;
+} 
+
+.header { 
+  margin-left: 10px;
+} 
+
+.text-div { 
+  display: flex; 
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 30px;
+} 
+
+.submit-btn { 
+  margin-top: 15px;
+  width: 75%; 
+  height: 40px; 
+  background: linear-gradient(90deg, white 1%, purple);
+  border: none;
+}
+
+input { 
+  width: 40%;
+  height: 35px;
+}  
+
+.button-div { 
+  display: flex;
+  justify-content: center;
+}
+
+
+

@@ -46,20 +46,30 @@ import { useState } from "react";
 //not changing the state itself; we are using setCount(count + 1) NOT setCount(count = count + 1)
 
 // 4. 
-export default App(){ 
-    const [count, setCount] = React.useState(0)
+// export default App(){ 
+//     const [count, setCount] = React.useState(0)
 
-    function addOne(){ 
-        setCount(prevCount => prevCount + 1)
-    }
+//     function addOne(){ 
+//         setCount(prevCount => prevCount + 1)
+//     }
 
 
-    return( 
-        <div> 
-            <button onClick={addOne}>{count}</button>
-        </div>
-    )
-}
-//. Keep track of the constituent steps of this problem: 1) define the component 2) destructure and useState with starting value 
-// 3) create function named after what it is doing that contains the destrcutures state function, which itself contain an anonymous callback 
-//4) create your return block that implements the event listener (which is the named function)
+//     return( 
+//         <div> 
+//             <button onClick={addOne}>{count}</button>
+//         </div>
+//     )
+// }
+//. Keep track of the constituent steps of this problem: A) define the component B) destructure and useState with starting value 
+//          C) create function named after what it is doing that contains the destrcutures state function, which itself contain an anonymous callback 
+//          D) create your return block that implements the event listener (which is the named function) 
+
+
+// 5. 
+//
+// Math.floor(Math.random() * obj.key1.key2.length) 
+//
+// Keep in mind that the exact dot notation you use to navigate into the precise array will depend 
+// on how everything is nested within the overarching object and its constituent keys.
+
+// 6. 

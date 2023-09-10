@@ -7,3 +7,5 @@
 //4. While 2 and 3 work, they are not best practice when changing the value of state; using an anonymous  callback function is best practice to change the state
 //value. Do number 3 but using best practices.  
 
+
+// 5. Generate a random number between 1 and the length of a specific array of objects 

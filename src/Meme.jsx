@@ -4,14 +4,24 @@ import memeData from './memeData'
 
 
 export default function(){ 
-    const [memeImage, setMemeImage] = React.useState("")
-
-    function getMemeImage(){ 
-        const memeArray = memeData.data.memes
+    const [meme, setMeme] = React.useState({
+        topText: "",
+        bottomText: "",
+        randomImage: "http://i.imgflip.com/1bij.jpg" 
+    })
+    
+    const [allMemeImages, setAllMemeImages] = React.useState(memeData)
+    
+    
+    function getMemeImage() {
+        const memeArray = allMemeImages.data.memes
         const randomNumber = Math.floor(Math.random() * memeArray.length)
-        setMemeImage(memeArray[randomNumber].url)
-    
-    
+        const url = memeArray[randomNumber].url
+        setMeme(prevMeme => ({
+            ...prevMeme,
+            randomImage: url
+        }))
+        
     }
     
     return( 
@@ -26,7 +36,7 @@ export default function(){
                     </div>
                 </div> 
                 <div className='img-div'> 
-                    <img src={memeImage}/>
+                    <img className="meme--image" src={meme.randomImage}/>
                 </div>
         </div>
     )

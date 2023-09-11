@@ -9,7 +9,6 @@ export default function App() {
     <div>
       <Header />
       <Meme />
-      <h3>hello</h3>
 
     </div>
   )

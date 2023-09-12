@@ -16,8 +16,8 @@ import { render } from "react-dom"
 
 // 6. Use a ternary operator to set a variable to something based on the value of another variable 
 
-// 7. Use a ternary operator to conditionally dislay "yes" or "no" in a component's markup 
 
+// 7. Use a ternary operator to conditionally dislay "yes" or "no" in a component's markup 
 
 // 8. create a boolean state  that changes from true to false when a markup element is clicked; 
 // The text being dispalyed will also change from "yes" to "no" when the state changed. 
@@ -31,3 +31,37 @@ import { render } from "react-dom"
 // When isFavorite state changes, the icon will change from a fill-in star to a greyed-out star. 
 // The image files will be: "star-filled.png" and "star-empty.png" 
 
+
+//11.  In a component called Star, pass in a prop to determine if an icon is filled-in star 
+// or a greyed-out star. Render this component as a child of App and pass in the props that are based on 
+// a state object property. 
+
+//----------------Star.jsx------------------- 
+
+// ----------------App.jsx------------------- 
+
+
+// 12. Do #11 but give the child component the ability to change the 
+//state in App by clicking on the image. 
+//
+//----------------Star.jsx------------------- 
+
+// ----------------App.jsx------------------- 
+
+// 13. Set the CSS proeprties of  a element in a React component
+
+// 14. Do the above but use a ternary operator to conditional set the cbackground color 
+// Assume that there the CSS property is dependent upon a prop called darkMode. 
+
+// 15. For every item in the state, have a parent component display that many child components.
+// Set the state  to the contents of another file called objFile.js , which is an array of objects
+// Next, if the array objects have their 'on' property set to true, have them render in a different color.
+
+//----------------Child.jsx------------------- 
+
+// ----------------Parent.jsx------------------- 
+
+
+// 16. 
+// Do the first 2 lines of #15. 
+// Create a function in the parent component and give its children access to this function. 

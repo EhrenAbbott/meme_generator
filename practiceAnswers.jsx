@@ -14,7 +14,7 @@ import { useState } from "react";
 
 
 // 2.
-// export default App() { 
+// export default function App() { 
 //     const [important, setImportant] = React.useState("yes")
 
 //     function handleClick(){ 
@@ -29,7 +29,7 @@ import { useState } from "react";
 // }
 
 // 3. 
-// default export App() { 
+// default export function App() { 
 //     [count, setCount] = React.useState(0)
 
 //     function addOne(){ 
@@ -46,7 +46,7 @@ import { useState } from "react";
 //not changing the state itself; we are using setCount(count + 1) NOT setCount(count = count + 1)
 
 // 4. 
-// export default App(){ 
+// export default function App(){ 
 //     const [count, setCount] = React.useState(0)
 
 //     function addOne(){ 
@@ -85,7 +85,7 @@ import { useState } from "react";
 // let myVar = isHome ? "yes" : "no"
 
 // 7. 
-// export default App(){ 
+// export default function App(){ 
 //     const isHome = true; 
 
 //     return( 
@@ -112,7 +112,7 @@ import { useState } from "react";
 // } 
 
 // 9. 
-// function App() {
+// export default function App() {
 //     const [thingsArray, setThingsArray] = React.useState(["Thing 1", "Thing 2"])
     
 //     function addItem() {
@@ -140,30 +140,229 @@ import { useState } from "react";
 
 
 //10. 
-export default function App() {
-    const [contact, setContact] = React.useState({
-        firstName: "John",
-        isFavorite: false
-    }) 
+// export default function App() {
+//     const [contact, setContact] = React.useState({
+//         firstName: "John",
+//         isFavorite: false
+//     }) 
 
-    let starIcon = contact.isFavorite ? "star-filled.png" : "star-empty.png"
+//     let starIcon = contact.isFavorite ? "star-filled.png" : "star-empty.png"
 
-    function toggleFavorite() {
-        setContact(prevContact => {
-            return {
-                ...prevContact,
-                isFavorite: !prevContact.isFavorite
-            }
-        })
-    } 
+//     function toggleFavorite() {
+//         setContact(prevContact => {
+//             return {
+//                 ...prevContact,
+//                 isFavorite: !prevContact.isFavorite
+//             }
+//         })
+//     } 
 
-    return (
-        <div>
-            <img src={`../images/${starIcon}`} onClick={toggleFavorite} />
-        </div>
-    )
-}
+//     return (
+//         <div>
+//             <img src={`../images/${starIcon}`} onClick={toggleFavorite} />
+//         </div>
+//     )
+// }
 //Notice that here you are using the spread operator with an object just as you would with an 
 // array in order to avoid directly altering the state. 
 // Also remember that bc the state is an object, you have to use dot notation with the key name 
 // to access the correct one.
+
+// 11. 
+//----------------Star.jsx------------------- 
+// import React from 'react' 
+
+// export default function Star(props){  
+
+//     const favIcon = props.isFilled  ? "file1.png" : "file2.png"
+
+//     return ( 
+//         <img src={`..images/${favIcon}`}/>
+//     )
+// }  
+//
+// ----------------App.jsx------------------- 
+// import React from 'react'
+// import Star from './Star.jsx'
+
+// export default function App(){  
+
+//     const [contact, setContact] = React.useState({ 
+//         isFavorite: true,
+//     })
+
+//     return (  
+//         <div>
+//             <Star isFilled={contact.isFavorite}/>
+//         </div>
+//     )
+// } 
+
+
+//12. 
+//----------------Star.jsx------------------- 
+// import React from 'react' 
+
+// export default function Star(props){  
+
+//     const favIcon = props.isFilled  ? "file1.png" : "file2.png"
+
+//     return ( 
+//         <img  
+//              src={`..images/${favIcon}`}
+//              onClick={props.handleClick}
+//          />
+//     )
+// }  
+//
+// ----------------App.jsx------------------- 
+// import React from 'react'
+// import Star from './Star.jsx'
+
+// export default function App(){  
+
+//     const [contact, setContact] = React.useState({ 
+//         isFavorite: true,
+//     }) 
+
+//     function toggleFavorite(){ 
+//         setContact(prevContact => { 
+//             return { 
+//                 ...prevContact, 
+//                 isFavorite: !prevContact.isFavorite
+//             }
+//         })
+//     }
+
+//     return (  
+//         <div>
+//             <Star  
+//                  isFilled={contact.isFavorite}
+//                  handleClick={toggleFavorite}
+//              />
+//         </div>
+//     )
+// } 
+
+
+// NOTE: you CANNOT pass in onClick={} to the child component in App. 
+// This is because the properties that get based in to child component are all custom properties, so 
+// onClick would have no inherent meaning here. This is a problem bc we need to interact with the 
+// child component and have it change the state, which is deifned in the parent component. 
+// So to get around this, in App we have to to pass in a custom prop, which is a function previosuly defined in App.
+// Then in Star, we have to create the onClick event listener that uses the function. 
+// ALSO NOTE: in App we call the prop handleClick, as opposed to onClick, bc this is a way of letting 
+// the reader know that this is a custom prop we've made and not the built in onClick event listener. 
+
+
+// 13. 
+// export default function App(){ 
+    
+//     const styles = { 
+//         backgroundColor: "black", 
+
+//     }
+
+//     return ( 
+//         <div style={styles}></div>
+//     )
+// } 
+
+//NOTE: the CSS has to be in CAMEL CASE and the value has to be in quotes!
+// Also, you can set the styles directly in the returned div, but it just looked clearer 
+// to define them in their own variable when you are passing in multiple properties. 
+
+
+// 14. 
+
+// export default function App(){ 
+    
+//     const styles = { 
+//         backgroundColor: props.darkMode ? "black" : "white"
+
+//     }
+
+//     return ( 
+//         <div style={styles}></div>
+//     )
+// }  
+
+
+// 15. 
+//----------------Child.jsx------------------- 
+// import React from 'react'
+
+// export default function Child(){ 
+
+//     const styles = { 
+//         backgroundColor: props.on ? "black" : "white"
+//     }
+    
+//     return( 
+//         <div style={styles}></div>
+//     )
+// }
+
+// ----------------Parent.jsx------------------- 
+// import React from 'react'
+// import Child from './Child.jsx' 
+// import objFile from './objFile.jsx'
+
+// export default function Parent(){ 
+//     const [state, setState] = React.useState(objFile)
+
+//     const mappedObj = state.map(item => <Child on={item.on} id={item.id}/>)
+
+//     return( 
+//         {mappedObj}
+//     )
+// } 
+
+
+// 16. 
+// ----------------Box.jsx------------------- 
+// import React from "react"
+
+// export default function Box(props) {
+    
+//     return (
+//         <div 
+//             onClick={()=>props.toggle()}
+//         >
+//         </div>
+//     )
+// }
+
+
+// ----------------App.jsx------------------- 
+// import React from "react"
+// import boxes from "./boxes"
+// import Box from "./Box"
+
+// export default function App() {
+//     const [squares, setSquares] = React.useState(boxes)
+    
+//     function toggle() {
+//         console.log("clicked")
+//     }
+    
+//     const squareElements = squares.map(square => (
+//         <Box 
+//             id={square.id}
+//             toggle={toggle}
+//         />
+//     ))
+    
+//     return (
+//         <main>
+//             {squareElements}
+//         </main>
+//     )
+// }
+
+//NOTE: when you create a function in the parent and pass it to the child, when this 
+// function gets used in the child, there is no was to pass an argument to it regularly just 
+// by using onClick={props.FUNC} . So bc of this, you have to child has to make its own function 
+// that runs props.FUNC , and bc of are making a new function you can give it the ability to take 
+// an arugument. This argument can be another prop, and if it is a unique identifier like 'id', 
+// this can be the argument that can be used to distnguish that particular child from the other identical children

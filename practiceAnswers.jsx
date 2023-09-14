@@ -287,6 +287,8 @@ import { useState } from "react";
 //     )
 // }  
 
+//#####################################################################################################################
+
 
 // 15. 
 //----------------Child.jsx------------------- 
@@ -319,6 +321,9 @@ import { useState } from "react";
 // } 
 
 
+//#####################################################################################################################
+
+
 // 16. 
 // ----------------Box.jsx------------------- 
 // import React from "react"
@@ -327,7 +332,7 @@ import { useState } from "react";
     
 //     return (
 //         <div 
-//             onClick={()=>props.toggle()}
+//             onClick={()=>props.toggle(props.id)}
 //         >
 //         </div>
 //     )
@@ -342,8 +347,8 @@ import { useState } from "react";
 // export default function App() {
 //     const [squares, setSquares] = React.useState(boxes)
     
-//     function toggle() {
-//         console.log("clicked")
+//     function toggle(id) {
+//         console.log(id)
 //     }
     
 //     const squareElements = squares.map(square => (
@@ -360,9 +365,55 @@ import { useState } from "react";
 //     )
 // }
 
-//NOTE: when you create a function in the parent and pass it to the child, when this 
-// function gets used in the child, there is no was to pass an argument to it regularly just 
-// by using onClick={props.FUNC} . So bc of this, you have to child has to make its own function 
-// that runs props.FUNC , and bc of are making a new function you can give it the ability to take 
-// an arugument. This argument can be another prop, and if it is a unique identifier like 'id', 
+//NOTE: when you create a function in the parent and pass it to the child and this 
+// function gets used in the child, there is no way in React for it to give it an argument
+// by using onClick={props.FUNC}. So bc of this, you have to give the child its own function 
+// that runs props.FUNC. 
+// So in the parent component when you say FUNC(arg) and pass it to the child, this sort of gives it the 
+// theoretical ability to take an argument with no concrete way to do so. In the child component, 
+// when you create an anon function that runs the props.FUNC, you are giving it a concrete way to take 
+// an argument. 
+//  This argument can be another prop, and if it is a unique identifier like 'id', 
 // this can be the argument that can be used to distnguish that particular child from the other identical children
+
+//#####################################################################################################################
+
+
+// 17. 
+// import React from 'react'
+
+// export default function Comp(props){ 
+
+//     const [isShown, setIsShown] = React.useState(false)
+
+//     function toggle(){ 
+//         setIsShown(prevShown => !prevShown)
+//     }
+
+//     return(  
+//         <div>
+//             {isShown && <p>{props.text}</p>} 
+//             <button onClick={toggle}>Show text</button>
+//         </div>
+//     )
+// }
+
+//#####################################################################################################################
+
+// 18. 
+
+// import React from "react"
+
+// export default function App() {
+//     const [messages, setMessages] = React.useState(["a", "b"])
+
+//     return (
+//         <div>
+//             {messages.length > 0 && <h1>You have {messages.length} unread messages!</h1>}
+//         </div>
+//     )
+// } 
+
+//NOTE: you can actually eliminate the "> 0" bc when the length is zero is automatically considered 
+// a falsey value. So just messages.length in the brackets with the && woudl be read as: if the lenght is not zero 
+// display the following

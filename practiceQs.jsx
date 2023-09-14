@@ -50,7 +50,7 @@ import { render } from "react-dom"
 
 // 13. Set the CSS proeprties of  a element in a React component
 
-// 14. Do the above but use a ternary operator to conditional set the cbackground color 
+// 14. Do the above but use a ternary operator to conditionally set the background color 
 // Assume that there the CSS property is dependent upon a prop called darkMode. 
 
 // 15. For every item in the state, have a parent component display that many child components.
@@ -58,10 +58,63 @@ import { render } from "react-dom"
 // Next, if the array objects have their 'on' property set to true, have them render in a different color.
 
 //----------------Child.jsx------------------- 
+// import React from 'react'
+
+// export default function Child(props){ 
+
+
+//     return( 
+
+//     )
+// }
+
 
 // ----------------Parent.jsx------------------- 
+// import React from 'react'
+// import Child from './Child.jsx'
+// import info from './Info.jsx'
+
+// export default function Parent(){ 
+
+
+    
+//     return( 
+        
+//     )
+// }
+
+
+//#####################################################################################################################
 
 
 // 16. 
 // Do the first 2 lines of #15. 
 // Create a function in the parent component and give its children access to this function. 
+// The function will console log its unique id (from state).
+// Allow the child's function to take its own unique argument; print the argument 
+
+//#####################################################################################################################
+
+
+// !!!Box challenge part 5 - don't understand: https://scrimba.com/learn/learnreact/boxes-challenge-part-5-cobdb4d3e907fa304af4b9958 !!!
+
+
+//#####################################################################################################################
+
+
+// 17. Create a component and give it a state of a boolean value. 
+// Create a function that chages this value from true to false (or vice versa). 
+// Display a button that chages th boolean value when clicked.
+// Have the component conditionally display text (received from parent component) only if the state is true
+
+
+//#####################################################################################################################
+
+
+// 18. Create a componnet that displays text only if there are items in the state array. 
+
+
+//#####################################################################################################################
+
+
+// 19. 

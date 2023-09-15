@@ -117,4 +117,31 @@ import { render } from "react-dom"
 //#####################################################################################################################
 
 
-// 19. 
+// 19. Create a react component that allows you to type in text. 
+//     Have the state update with each keystroke and display the state. 
+
+
+//#####################################################################################################################
+
+// 20. Do 19 but create a form with two input fields.
+//     Give the one function the ability to update the part of state that represents each input field text. 
+//     (This means the state has to be an object)
+
+
+//#####################################################################################################################
+
+// 21.  Create a react component that had a form that allows you to type in text and another element that is a checkbox
+
+
+//#####################################################################################################################
+
+// 22. Create a react component with a text input form and a radio button with three options. 
+
+//#####################################################################################################################
+
+// 23. Create a react component with a text input form and a select box and two options. 
+
+
+//#####################################################################################################################
+
+// 24. Create a button so submit  a form and a handleSubmit function

@@ -417,3 +417,316 @@ import { useState } from "react";
 //NOTE: you can actually eliminate the "> 0" bc when the length is zero is automatically considered 
 // a falsey value. So just messages.length in the brackets with the && woudl be read as: if the lenght is not zero 
 // display the following
+
+
+//#####################################################################################################################
+
+
+// 19. 
+// export default function Comp() { 
+
+//     const [text, setText] = React.useState("")
+
+//     function handleChange(event) { 
+//         setText(event.target.value)
+//     }
+
+//     return( 
+//         <form> 
+//             <input  
+//                 type="text"
+//                 onChange={handleChange}
+//             />
+//         </form>
+//     )
+// }
+
+//NOTE: most/all form elements have an event listener called onChange that checks anytime
+// something is modified at all (so not just as the form is submitted, but as the user is typing)
+//ALSO: when you give the onChage function a param (calling it "event" is the convention), console.loggin
+// this event will show you an object that contains a lot of meta info about the function. The propert in this 
+// object that you will most likely care about is called "target." Remember this object is 
+// automatically created so the 'target' property is what the system calls it. 
+// Console.logging this event.target will show you the html element: <input type="type">    (and 
+// whatever properties this element has) 
+// Finally, to display what is actually being typed in the input, you would have to use event.target.value to navigate to the 
+// correct part of the generated object. 
+
+
+//#####################################################################################################################
+
+
+// 20. Do 19 but create a form with two input fields.
+//     Give the one function the ability to update the part of state that represents each input field text. 
+//     (This means the state has to be an object)
+//     Give it an input that is a text area
+
+// import React from "react"
+
+// export default function Form() {
+//     const [formData, setFormData] = React.useState(
+//         {firstName: "", lastName: "", comments: ""}
+//     )
+    
+    
+//     function handleChange(event) {
+//         setFormData(prevFormData => {
+//             return {
+//                 ...prevFormData,
+//                 [event.target.name]: event.target.value
+//             }
+//         })
+//     }
+    
+//     return (
+//         <form>
+//             <input
+//                 type="text"
+//                 onChange={handleChange}
+//                 name="firstName"
+//                 value={formData.firstName}
+
+
+//             />
+//             <input
+//                 type="text"
+//                 onChange={handleChange}
+//                 name="lastName"
+//                 value={formData.lastName}
+//             /> 
+//             <textarea 
+//                 value={formData.comments}
+//                 onChange={handleChange}
+//                 name="comments"
+//             />
+//         </form>
+//     )
+// }
+
+// NOTE: the name property gives that input its unique label, just so we have some way fo referring to it 
+// and distinguishing it from other input fields.  
+// ALSO: After the spread operator in the return block, the usage of the brackets is called "computed property"
+// introduced in ES6, which allows you turn something saved in a variable as the property name for a object.
+// So the function is saying: return everything in the object but where there is a property that matches the input name, 
+// update this to be the new input value (which is what is being typed at the time)
+// BTW: the value of the inputs need to be set equal to  the state that represents that input value. So just make sure those var 
+// names match. 
+// Theory: the value property does not actually change anything with the display; it has a more behind-the-scenes effect that 
+// has to do with a concept called 'controlled componennts'; essentially, before we used "value", when a user types into an
+// input box, that input box is maintaining its own state, which means there are two pieces of state: this one, held by the input 
+// box in regular html, and the other held in the React code which is updating on every keystroke. 
+// So "value" makes it so the value of the input box isn't being controlled but the input itself but rather by React, 
+// and this avoids a potential soruces of conflict, as no the state is telling the input box what to be instead of the 
+// other way around. 
+// FYI: in React, textarea is self closing and bhaves just like <input /> in terms of the properties you have it give it (except 
+// you don't have to give it a type)
+
+
+
+//#####################################################################################################################
+
+// 21. 
+
+// import React from "react"
+
+// export default function Form() {
+//     const [formData, setFormData] = React.useState(
+//         {
+//             firstName: "", 
+//             isFriendly: true
+//         }
+//     )
+    
+//     function handleChange(event) {
+//         const {name, value, type, checked} = event.target
+//         setFormData(prevFormData => {
+//             return {
+//                 ...prevFormData,
+//                 [name]: type === "checkbox" ? checked : value
+//             }
+//         })
+//     }
+    
+//     return (
+//         <form>
+//             <input
+//                 type="text"
+//                 onChange={handleChange}
+//                 name="firstName"
+//                 value={formData.firstName}
+//             />
+//             <input 
+//                 type="checkbox" 
+//                 id="isFriendly" 
+//                 checked={formData.isFriendly}
+//                 onChange={handleChange}
+//                 name="isFriendly"
+//             />
+//             <label htmlFor="isFriendly">Are you friendly?</label>
+//         </form>
+//     )
+// }
+
+// Note: checkboxes are an input with type="checkbox" and they hold a boolean value. This gets paired with a label element, 
+// which can be nested or can be its own seperate line. The link the two, the label's htmlFor property has to be the input's id; not that 
+// this property name is a bit different than in plain html. Be sure to make the state for the  checkbox a boolean and not a string. 
+// It  will also get a checked={} property INSTEAD OF a value property, and this will be true or false, and the handleChange function has to take this
+// into account. 
+// ALSO: Notice how the even.target properties are being desctructured here before returning the spread 
+//operator. This is for efficiency bc each input will have a key called 'name', BUT the value of that key will come from 
+// different properties depending on if it is a checkbox or if it is another type of input.
+
+//#####################################################################################################################
+
+// 22.  
+// import React from "react"
+
+// export default function Form() {
+//     const [formData, setFormData] = React.useState(
+//         {
+//             firstName: "", 
+//             employment: ""
+//         }
+//     )
+    
+//     function handleChange(event) {
+//         const {name, value, type, checked} = event.target
+//         setFormData(prevFormData => {
+//             return {
+//                 ...prevFormData,
+//                 [name]: type === "checkbox" ? checked : value
+//             }
+//         })
+//     }
+    
+//     return (
+//         <form>
+//             <input
+//                 type="text"
+//                 onChange={handleChange}
+//                 name="firstName"
+//                 value={formData.firstName}
+//             />
+            
+//             <fieldset>
+//                 <legend>Current employment status</legend>
+                
+//                 <input 
+//                     type="radio"
+//                     id="unemployed"
+//                     name="employment"
+//                     value="unemployed"
+//                     checked={formData.employment === "unemployed"}
+//                     onChange={handleChange}
+//                 />
+//                 <label htmlFor="unemployed">Unemployed</label>
+//                 <br />
+                
+//                 <input 
+//                     type="radio"
+//                     id="part-time"
+//                     name="employment"
+//                     value="part-time"
+//                     checked={formData.employment === "part-time"}
+//                     onChange={handleChange}
+//                 />
+//                 <label htmlFor="part-time">Part-time</label>
+//             </fieldset>
+//         </form>
+//     )
+// } 
+//NOTE: the name for all of the radio options will be the SAME; this is what makes it so you can only choose one of them
+// IN terms of how ti handles state, notice that its state value is actually a string that is also NOT a text input; 
+// this is unlike the checkbox, which has a true or false value, and the text input value, which is the string that the user creates 
+// Because it is unique in this way, it has both a value, which is it's unique text that applies to that particular option 
+// AND it has a checked property that we turn into a boolean by saying mariking it true if it is equal to the value property (which is in itself 
+// the same as the name property for that option)
+
+//#####################################################################################################################
+
+// 23. 
+// import React from "react"
+
+// export default function Form() {
+//     const [formData, setFormData] = React.useState(
+//         {
+//             firstName: "", 
+//             favColor: ""
+//         }
+//     )
+    
+//     function handleChange(event) {
+//         console.log(event)
+//         const {name, value, type, checked} = event.target
+//         setFormData(prevFormData => {
+//             return {
+//                 ...prevFormData,
+//                 [name]: type === "checkbox" ? checked : value
+//             }
+//         })
+//     }
+    
+//     return (
+//         <form>
+//             <input
+//                 type="text"
+//                 placeholder="First Name"
+//                 onChange={handleChange}
+//                 name="firstName"
+//                 value={formData.firstName}
+//             />
+            
+//             <label htmlFor="favColor">What is your favorite color?</label>
+//             <br />
+//             <select 
+//                 id="favColor"
+//                 value={formData.favColor}
+//                 onChange={handleChange}
+//                 name="favColor"
+//             >
+//                 <option value="">-- Choose --</option>
+//                 <option value="red">Red</option>
+//                 <option value="orange">Orange</option>
+//                 <option value="yellow">Yellow</option>
+//                 <option value="green">Green</option>
+//                 <option value="blue">Blue</option>
+//                 <option value="indigo">Indigo</option>
+//                 <option value="violet">Violet</option>
+//             </select>
+//         </form>
+//     )
+// }
+
+//NOTE: The select element has multiple properties but the options only have a value
+
+//#####################################################################################################################
+
+// 24. 
+
+// import React from "react"
+
+// export default function Form() {
+//     const [formData, setFormData] = React.useState(
+//         {
+//             firstName: "", 
+//         }
+//     )
+    
+//     function handleSubmit(event) {
+//         event.preventDefault()
+//         // submitToApi(formData)
+//         console.log(formData)
+//     }
+    
+//     return (
+//         <form onSubmit={handleSubmit}>
+//             <button>Submit</button>
+//         </form>
+//     )
+// }
+ 
+//NOTE: With this submit button/func you woudl of course need to  input fields and appropriate
+// accompany bits of state and the handleChange func to update state.
+//ALSO: the event.preventDefault() part just makes it so that when the form is submitted the inputs and fields don't
+// get added to the URL, which is what would normally happen without preventDefault. 
+//AND: notice the event listener for the button is not onChange or onClick, but onSubmit

@@ -730,3 +730,38 @@ import { useState } from "react";
 //ALSO: the event.preventDefault() part just makes it so that when the form is submitted the inputs and fields don't
 // get added to the URL, which is what would normally happen without preventDefault. 
 //AND: notice the event listener for the button is not onChange or onClick, but onSubmit
+
+//#####################################################################################################################
+
+// 25. 
+
+// import React from "react"
+
+// export default function App() {
+//     const [starWarsData, setStarWarsData] = React.useState({})
+    
+//     fetch("https://swapi.dev/api/people/1")
+//         .then(res => res.json())
+//         .then(data => setStarWarsData(data))
+    
+//     return (
+//         <div>
+//             <pre>{JSON.stringify(starWarsData, null, 2)}</pre>
+//         </div>
+//     )
+// }
+
+//NOTE: If you console.log the API object, it will run an infinite loop. This is because anytime the component renders, its going to call fetch, 
+// and everytime it calls fetch it sets the starWarsData, which updates the state, causing react to rerender the component and on and on
+// The fetch request is considered a side effect, and that will need to be handled in a certain way (below)
+
+//#####################################################################################################################
+
+// 26. 
+
+
+//NOTE: useEffect takes one required parameter, with will be a function, and a second optional parameter (but almost always gets used). 
+// It essentially allows this outside effect to remain in sync with React components. 
+// The code in the useEffect callback function will only run after the user interface (from the return block) are created 
+// and placed on the DOM. 
+// If the second parameter is left as an empty array, the first param (the function) will only run once when the component first loads.

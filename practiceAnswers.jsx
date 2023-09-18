@@ -757,11 +757,93 @@ import { useState } from "react";
 
 //#####################################################################################################################
 
-// 26. 
+// 26.  
+// import React from "react"
 
+// export default function App() {
+//     const [starWarsData, setStarWarsData] = React.useState({})
+    
+//     React.useEffect(function() {
+//         console.log("Effect ran")
+//         fetch("https://swapi.dev/api/people/1")
+//             .then(res => res.json())
+//             .then(data => setStarWarsData(data))
+//     }, [])
+    
+//     return (
+//         <div>
+//             <pre>{JSON.stringify(starWarsData, null, 2)}</pre>
+//         </div>
+//     )
+// }
 
 //NOTE: useEffect takes one required parameter, with will be a function, and a second optional parameter (but almost always gets used). 
 // It essentially allows this outside effect to remain in sync with React components. 
 // The code in the useEffect callback function will only run after the user interface (from the return block) are created 
 // and placed on the DOM. 
 // If the second parameter is left as an empty array, the first param (the function) will only run once when the component first loads.
+
+//##################################################################################################################### 
+
+// 27.  
+// import React from "react"
+
+// export default function App() {
+//     const [starWarsData, setStarWarsData] = React.useState({})
+//     const [count, setCount] = React.useState(1)
+    
+//     React.useEffect(function() {
+//         console.log("Effect ran")
+//         fetch("https://swapi.dev/api/people/1")
+//             .then(res => res.json())
+//             .then(data => setStarWarsData(data))
+//     }, [count])
+    
+//     return (
+//         <div>
+//             <h2>The count is {count}</h2>
+//             <button onClick={() => setCount(prevCount => prevCount + 1)}>Get Next Character</button>
+//             <pre>{JSON.stringify(starWarsData, null, 2)}</pre>
+//         </div>
+//     )
+// }
+
+//#####################################################################################################################
+
+// 28.  
+// import React from "react"
+
+// export default function App() {
+//     const [starWarsData, setStarWarsData] = React.useState({})
+//     const [count, setCount] = React.useState(1)
+    
+//     React.useEffect(function() {
+//         console.log("Effect ran")
+//         fetch(`https://swapi.dev/api/people/${count}`)
+//             .then(res => res.json())
+//             .then(data => setStarWarsData(data))
+//     }, [count])
+    
+//     return (
+//         <div>
+//             <h2>The count is {count}</h2>
+//             <button onClick={() => setCount(prevCount => prevCount + 1)}>Get Next Character</button>
+//             <pre>{JSON.stringify(starWarsData, null, 2)}</pre>
+//         </div>
+//     )
+// }
+
+
+//#####################################################################################################################
+
+// 29. 
+
+//#####################################################################################################################
+
+// 30.
+
+//#####################################################################################################################
+
+// 31. 
+
+//#####################################################################################################################

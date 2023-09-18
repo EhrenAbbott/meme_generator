@@ -152,15 +152,16 @@ import { render } from "react-dom"
 
 //#####################################################################################################################
 
-// 26. 
+// 26. Do #25 but make it so an infinite loop does not run and the API data is only pulled once on the very first render of the component
 
 //#####################################################################################################################
 
-// 27. 
+// 27. Have a component retrieve data from an API and create a button that adds 1 to a count. 
+//     Every time 1 is added to the count, have the API retrieve the data again.
 
 //#####################################################################################################################
 
-// 28. 
+// 28. Do #27, but everytime the count is updated, have the API retrieve a new set of data with that object ID (in the API URL) equivalent to the count number. 
 
 //#####################################################################################################################
 

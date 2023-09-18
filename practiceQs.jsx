@@ -165,10 +165,23 @@ import { render } from "react-dom"
 
 //#####################################################################################################################
 
-// 29. 
+// 29.  Create a parent component that has a button that will toggle its child component on or off if the state is set to true. 
+//      Create a window tracker  child component that display's the window width. 
+//      When the window is resized, have the display dynamically update to display the current width (using state)
+
+//-----------------------------------App.jsx---------------------------------
+
+//-----------------------------------WindowTracker.jsx---------------------------------
+
 
 //#####################################################################################################################
 
-// 30. 
+// 30. Do #29 but add a cleanup function to make it so the 'memory leak' error does not occur. 
 
 //#####################################################################################################################
+
+// 31.  Do #26, except use an async function in useEffect.
+
+//#####################################################################################################################
+
+// 32. 

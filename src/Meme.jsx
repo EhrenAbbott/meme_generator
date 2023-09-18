@@ -38,9 +38,7 @@ export default function(){
         })
     }
 
-    // function handleSubmit(event){ 
-    //     event.def
-    // }
+  
     
     return( 
         <div className='meme-div'>  

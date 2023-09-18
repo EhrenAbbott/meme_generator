@@ -836,14 +836,123 @@ import { useState } from "react";
 
 //#####################################################################################################################
 
-// 29. 
+// 29.  
 
+//-----------------------------------App.jsx---------------------------------
+// import React from "react"
+// import WindowTracker from "./WindowTracker"
+
+// export default function App() {
+    
+//     const [show, setShow] = React.useState(true)
+    
+//     function toggle() {
+//         setShow(prevShow => !prevShow)
+//     }
+    
+//     return (
+//         <div className="container">
+//             <button onClick={toggle}>
+//                 Toggle WindowTracker
+//             </button>
+//             {show && <WindowTracker />}
+//         </div>
+//     )
+// }
+
+//-----------------------------------WindowTracker.jsx---------------------------------
+// import React from "react"
+
+// export default function WindowTracker() {
+    
+//     const [windowWidth, setWindowWidth] = React.useState(window.innerWidth)
+    
+//     React.useEffect(() => {
+//         window.addEventListener("resize", function() {
+//             setWindowWidth(window.innerWidth)
+//         })
+//     }, [])
+    
+//     return (
+//         <h1>Window width: {windowWidth}</h1>
+//     )
+// } 
+
+//NOTE: at it is, this will work but will create an error message when the toggle si off and you change the window size. 
+// This is because when it is toggled off, this component gets 'unmounted'; 
+// This means it is completely removed from the DOM, but the browser itself is still listening for the resize event and trying to set the 
+// window width of an unmounted component. This issue is called a "memory leak". 
+// The next problem wll address how to fix this memory leak.
 //#####################################################################################################################
 
 // 30.
 
+//-----------------------------------App.jsx---------------------------------
+// SEE; #29
+
+//-----------------------------------WindowTracker.jsx---------------------------------
+
+// import React from "react"
+
+// export default function WindowTracker() {
+    
+//     const [windowWidth, setWindowWidth] = React.useState(window.innerWidth)
+    
+//     React.useEffect(() => {
+//         function watchWidth() {
+//             setWindowWidth(window.innerWidth)
+//         }
+        
+//         window.addEventListener("resize", watchWidth)
+        
+//         return function() {
+//             window.removeEventListener("resize", watchWidth)
+//         }
+//     }, [])
+    
+//     return (
+//         <h1>{windowWidth}</h1>
+//     )
+// }
+
+//This utilizes a useEffect "cleanup function" that takes care of any unwanted side effects, in this case, removing the event listener
+// This is not so different than #29; here the setWindowWidth function is named instead of being anonymous, and this named function
+// is what we run in the event listener (instead of being defined in line)
+// Then, the we make our cleanup function; this needs to be created after a return; this way, React knows to run it when the 
+// component's lifecycle comes to an end and it is toggled off. 
+//The cleanup function simply uses .removeEventListener to undo what was done initially. 
+// NOTE: not every useEffect will need a cleanup function, but that is the case here. 
 //#####################################################################################################################
 
 // 31. 
+// import React from "react"
+
+// export default function App() {
+//     const [starWarsData, setStarWarsData] = React.useState({})
+    
+//     React.useEffect(() => { 
+//         async function getMemes(){
+//             const res = await fetch("https://swapi.dev/api/people/1")
+//             const data = await res.json()
+//             setStarWarsData(data)
+//         }
+
+//         getMemes()
+//     }, [])
+    
+//     return (
+//         <div>
+//             <pre>{JSON.stringify(starWarsData, null, 2)}</pre>
+//         </div>
+//     )
+// }
+
+// useEffect takes a function as its parameter. If that function
+// returns something, it needs to be a cleanup function. Otherwise,
+// it should return nothing. If we make it an async function, it
+// automatically retuns a promise instead of a function or nothing.
+// Keep in minf that async alters how a function works;  anything returned from an async function 
+// will automatically and always be a promise. 
+
 
 //#####################################################################################################################

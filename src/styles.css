@@ -121,3 +121,7 @@ input {
 main {
   padding: 36px;
 }
+
+.push-left { 
+  color: pink;
+}

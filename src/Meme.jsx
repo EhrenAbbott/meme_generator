@@ -23,9 +23,10 @@ export default function(){
         console.log(url)
         setMeme(prevMeme => ({
             ...prevMeme,
-            randomImage: url
+            randomImage: url,
+            topText: "", 
+            bottomText: "",
         }))
-        
     } 
 
     function handleChange(event){ 
@@ -61,7 +62,7 @@ export default function(){
                         onChange={handleChange}
                     />
                     <button 
-                        onClick={getMemeImage} 
+                        onClick={getMemeImage}
                         className='form--button' 
                         type="submit">
                             Get new image

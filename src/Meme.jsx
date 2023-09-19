@@ -20,6 +20,7 @@ export default function(){
     function getMemeImage() {
         const randomNumber = Math.floor(Math.random() * allMemeImages.length)
         const url = allMemeImages[randomNumber].url
+        console.log(url)
         setMeme(prevMeme => ({
             ...prevMeme,
             randomImage: url
@@ -41,33 +42,36 @@ export default function(){
   
     
     return( 
-        <div className='meme-div'>  
-                <div className='form-div'> 
-                    <div className='text-div'>
-                        <input  
-                            type="text" 
-                            placeholder='top text'
-                            name="topText"
-                            value={meme.topText}
-                            onChange={handleChange}
-                        /> 
-                        <input 
-                            type="text" 
-                            placeholder='bottom text'
-                            name="bottomText"
-                            value={meme.bottomText}
-                            onChange={handleChange}
-                        />
-                    </div>  
-                    <div className='button-div'>
-                        <button onClick={getMemeImage} className='submit-btn' type="submit">Get new image</button>
-                    </div>
+        <main>  
+                <div className='form'> 
+                    <input  
+                        className='form--input'
+                        type="text" 
+                        placeholder='top text'
+                        name="topText"
+                        value={meme.topText}
+                        onChange={handleChange}
+                    /> 
+                    <input
+                        className='form--input' 
+                        type="text" 
+                        placeholder='bottom text'
+                        name="bottomText"
+                        value={meme.bottomText}
+                        onChange={handleChange}
+                    />
+                    <button 
+                        onClick={getMemeImage} 
+                        className='form--button' 
+                        type="submit">
+                            Get new image
+                    </button>
                 </div> 
                 <div className='meme'> 
                     <img className="meme--image" src={meme.randomImage}/>
                     <h2 className="meme--text top">{meme.topText}</h2>
                     <h2 className="meme--text bottom">{meme.bottomText}</h2>
                 </div>
-        </div>
+        </main>
     )
 }
